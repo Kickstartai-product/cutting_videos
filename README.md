@@ -4,7 +4,7 @@ for cases of unattended objects.
 
 Make sure you have the following folder structure in this project:
 
-.
+.\
 ├── input_videos\
 ├── output_frames\
 ├── output_videos\
