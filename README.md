@@ -5,13 +5,13 @@ for cases of unattended objects.
 Make sure you have the following folder structure in this project:
 
 .
-├── input_videos
-├── output_frames
-├── output_videos
-├── pyproject.toml
-├── README.md
-├── statistics
-├── tests
+├── input_videos\
+├── output_frames\
+├── output_videos\
+├── pyproject.toml\
+├── README.md\
+├── statistics\
+├── tests\
 └── video_cutting_demo
 
 To run the code, make sure that there are input videos present in `input_videos`. 
