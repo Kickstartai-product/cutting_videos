@@ -92,3 +92,9 @@ def save_keep_segments(keep_segments, output_file):
         f.write("start_time,end_time\n")
         for start, end in keep_segments:
             f.write(f"{start},{end}\n")
+
+def get_fps(video_path):
+    cap = cv2.VideoCapture(video_path)
+    fps = cap.get(cv2.CAP_PROP_FPS)
+    cap.release()
+    return fps
