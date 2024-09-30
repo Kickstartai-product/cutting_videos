@@ -32,8 +32,10 @@ def analyze_video_frames(
 
         timestamp = i / fps
         detected_objects = predictor.predict(frame, i)
-        detected_objects['timestamp'] = timestamp
-        detected_objects['fame_number'] = i
+        # insert timestamp and frame number into detected objects, this is useful for debugging
+        for d in detected_objects:
+            d['timestamp'] = timestamp
+            d['frame_number'] = i
         has_objects = len(detected_objects) > 0
         frame_data.append((timestamp, has_objects, detected_objects))
 
