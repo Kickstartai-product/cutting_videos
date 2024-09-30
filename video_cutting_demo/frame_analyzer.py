@@ -24,7 +24,6 @@ def analyze_video_frames(
     frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
     frame_data = []
-    frame_data_extensive = []
     for i in tqdm(range(0, frame_count, sampling_rate)):
         cap.set(cv2.CAP_PROP_POS_FRAMES, i)
         ret, frame = cap.read()
@@ -33,6 +32,8 @@ def analyze_video_frames(
 
         timestamp = i / fps
         detected_objects = predictor.predict(frame, i)
+        detected_objects['timestamp'] = timestamp
+        detected_objects['fame_number'] = i
         has_objects = len(detected_objects) > 0
         frame_data.append((timestamp, has_objects, detected_objects))
 

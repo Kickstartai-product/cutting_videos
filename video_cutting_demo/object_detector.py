@@ -69,7 +69,10 @@ class ObjectDetector:
                 x1, y1, x2, y2 = box.int().tolist()
                 detected_objects.append({
                     "name": label,
-                    "bounding_box": [x1, y1, x2, y2],
+                    "x1": x1,
+                    "y1": y1,
+                    "x2": x2,
+                    "y2": y2,
                     "confidence": score.item()
                 })
         
