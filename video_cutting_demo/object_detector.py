@@ -11,9 +11,9 @@ class ObjectDetector:
         self.CONFIDENCE_THRESHOLD = confidence_threshold
         self.RELEVANT_CLASSES = {
             1: "person",
-            25: "backpack",
-            27: "handbag",
-            29: "suitcase"
+            27: "backpack",
+            31: "handbag",
+            33: "suitcase"
         }
         self.save_frames = save_frames
         
