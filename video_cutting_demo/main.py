@@ -5,6 +5,7 @@ from frame_analyzer import (
     generate_keep_segments,
     save_keep_segments,
 )
+import json
 
 
 def process_video(
@@ -17,6 +18,10 @@ def process_video(
 ):
     # Analyze video frames
     frame_data = analyze_video_frames(input_video, detector, sampling_rate)
+
+    # save frame data to a json file
+    with open("statistics/frame_data.json", "w") as f:
+        json.dump(frame_data, f)
 
     # Generate keep segments
     keep_segments = generate_keep_segments(frame_data, empty_frame_threshold)
@@ -38,7 +43,7 @@ if __name__ == "__main__":
     CONFIDENCE_THRESHOLD = 0.5  # Minimum confidence for object detection
 
     detector = ObjectDetector(
-        output_frames_dir=OUTPUT_FRAMES_DIR, confidence_threshold=CONFIDENCE_THRESHOLD, verbose=True
+        output_frames_dir=OUTPUT_FRAMES_DIR, confidence_threshold=CONFIDENCE_THRESHOLD, verbose=False
     )
 
     process_video(

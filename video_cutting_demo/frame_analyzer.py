@@ -24,6 +24,7 @@ def analyze_video_frames(
     frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
     frame_data = []
+    frame_data_extensive = []
     for i in tqdm(range(0, frame_count, sampling_rate)):
         cap.set(cv2.CAP_PROP_POS_FRAMES, i)
         ret, frame = cap.read()
@@ -31,8 +32,9 @@ def analyze_video_frames(
             break
 
         timestamp = i / fps
-        has_objects = predictor.predict(frame, i)
-        frame_data.append((timestamp, has_objects))
+        detected_objects = predictor.predict(frame, i)
+        has_objects = len(detected_objects) > 0
+        frame_data.append((timestamp, has_objects, detected_objects))
 
     cap.release()
     return frame_data
@@ -54,7 +56,7 @@ def generate_keep_segments(frame_data, empty_frame_threshold):
     empty_count = 0
     last_object_time = 0
 
-    for i, (timestamp, has_objects) in enumerate(frame_data):
+    for i, (timestamp, has_objects, _) in enumerate(frame_data):
         if has_objects:
             if empty_count >= empty_frame_threshold:
                 if start_time < last_object_time:
