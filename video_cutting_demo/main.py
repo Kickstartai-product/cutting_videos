@@ -35,8 +35,8 @@ def process_video(
 
 
 if __name__ == "__main__":
-    INPUT_VIDEO = "input_videos/data_station_footage_Zandvoort_livestream_2024-08-04_11-37-06.mp4"
-    OUTPUT_VIDEO = "output_videos/demo_short.mp4"
+    INPUT_VIDEO = ""
+    OUTPUT_VIDEO = ""
     OUTPUT_FRAMES_DIR = "output_frames"
     STATISTICS_FILE = "statistics/keep_segments.csv"
     FRAME_INTERVAL = get_fps(INPUT_VIDEO) * 5 # Analyze every 5 seconds
